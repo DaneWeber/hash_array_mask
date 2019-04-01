@@ -8,10 +8,10 @@ end
 
 describe Hash do
   it 'responds to .merge' do
-    expect(Hash.new).to respond_to(:merge)
+    expect({}).to respond_to(:merge)
   end
-  
+
   it 'responds to .whitelist' do
-    expect(Hash.new).to respond_to(:whitelist)
+    expect({}).to respond_to(:whitelist)
   end
 end

@@ -6,3 +6,8 @@ class HashArrayMask
     'Hello world!'
   end
 end
+
+# Patch Hash to support nested masking behavior
+class Hash
+  def whitelist; end
+end
