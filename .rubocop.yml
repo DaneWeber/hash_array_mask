@@ -1,3 +1,5 @@
 AllCops:
   Exclude:
-    - 'bin/**/*'
+    - "bin/**/*"
+Metrics/BlockLength:
+  ExcludedMethods: ["describe", "context"]
