@@ -40,5 +40,15 @@ describe Hash do
         expect(modified).to eq(expectation)
       end
     end
+
+    context 'nested hash whitelist' do
+      payload = { top: { a: 'A', b: 'B' } }
+
+      it 'returns only part of a nested hash' do
+        modified = payload.whitelist(top: { a: true })
+        expectation = { top: { a: 'A' } }
+        expect(modified).to eq(expectation)
+      end
+    end
   end
 end

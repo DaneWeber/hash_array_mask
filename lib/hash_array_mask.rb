@@ -12,6 +12,14 @@ class Hash
   def whitelist(sieve)
     return {} if sieve.nil?
 
-    self.select { |k, _v| sieve[k] == true }
+    sieve.each_with_object({}) do |(k, v), result|
+      next if self[k].nil?
+
+      if v == true
+        result[k] = self[k]
+      elsif v.is_a?(Hash)
+        result[k] = self[k].whitelist(v)
+      end
+    end
   end
 end
