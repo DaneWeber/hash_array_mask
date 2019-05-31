@@ -19,6 +19,11 @@ describe Hash do
     context 'simple hash whitelist' do
       payload = { a: 'A', b: [1, 2, 3], c: :c, d: { alpha: 'A', beta: 'B' } }
 
+      it 'returns an empty hash if the sieve is nil' do
+        modified = payload.whitelist(nil)
+        expect(modified).to eq({})
+      end
+
       it 'returns an empty hash if there are no matches' do
         modified = payload.whitelist(x: true)
         expect(modified).to eq({})

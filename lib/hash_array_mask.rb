@@ -10,6 +10,8 @@ end
 # Patch Hash to support nested masking behavior
 class Hash
   def whitelist(sieve)
+    return {} if sieve.nil?
+
     self.select { |k, _v| sieve[k] == true }
   end
 end
