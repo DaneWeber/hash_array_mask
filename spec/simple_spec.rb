@@ -99,4 +99,23 @@ describe Array do
   it 'responds to .whitelist' do
     expect([]).to respond_to(:whitelist)
   end
+
+  context 'simple array whitelist' do
+    payload = [1, 2, 3, 'a', 'b', 'c', :x, :y, { hash: :yes }]
+
+    it 'returns an empty array if the sieve is nil' do
+      modified = payload.whitelist(nil)
+      expect(modified).to eq([])
+    end
+
+    it 'returns an empty array if the sieve is empty' do
+      modified = payload.whitelist([])
+      expect(modified).to eq([])
+    end
+
+    it 'returns an equal array if there is an equal number of trues' do
+      modified = payload.whitelist(Array.new(payload.length, true))
+      expect(modified).to eq(payload)
+    end
+  end
 end

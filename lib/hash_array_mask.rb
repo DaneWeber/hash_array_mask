@@ -26,5 +26,11 @@ end
 
 # Patch Array to support nested masking behavior
 class Array
-  def whitelist; end
+  def whitelist(sieve)
+    return [] if sieve.nil?
+
+    each_index.with_object([]) do |i, result|
+      result << self[i] if sieve[i]
+    end
+  end
 end
