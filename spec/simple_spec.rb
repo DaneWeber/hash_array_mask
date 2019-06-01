@@ -42,11 +42,53 @@ describe Hash do
     end
 
     context 'nested hash whitelist' do
-      payload = { top: { a: 'A', b: 'B' } }
+      payload = {
+        top: {
+          a: 'A',
+          b: 'B'
+        },
+        strata: {
+          junk: 'x',
+          one: {
+            junk: 'x',
+            two: {
+              junk: 'x',
+              three: {
+                junk: 'x',
+                four: 'bedrock'
+              }
+            }
+          }
+        }
+      }
 
       it 'returns only part of a nested hash' do
         modified = payload.whitelist(top: { a: true })
         expectation = { top: { a: 'A' } }
+        expect(modified).to eq(expectation)
+      end
+
+      it 'returns goes deep in nested hashes' do
+        modified = payload.whitelist(strata: {
+                                       one: {
+                                         two: {
+                                           three: {
+                                             four: true
+                                           }
+                                         }
+                                       }
+                                     })
+        expectation = {
+          strata: {
+            one: {
+              two: {
+                three: {
+                  four: 'bedrock'
+                }
+              }
+            }
+          }
+        }
         expect(modified).to eq(expectation)
       end
     end
