@@ -23,3 +23,8 @@ class Hash
     end
   end
 end
+
+# Patch Array to support nested masking behavior
+class Array
+  def whitelist; end
+end

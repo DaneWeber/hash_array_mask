@@ -94,3 +94,9 @@ describe Hash do
     end
   end
 end
+
+describe Array do
+  it 'responds to .whitelist' do
+    expect([]).to respond_to(:whitelist)
+  end
+end
