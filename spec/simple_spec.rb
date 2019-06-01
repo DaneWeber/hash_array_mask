@@ -117,5 +117,32 @@ describe Array do
       modified = payload.whitelist(Array.new(payload.length, true))
       expect(modified).to eq(payload)
     end
+
+    it 'returns only those selected' do
+      modified = payload.whitelist([
+                                     true,
+                                     false,
+                                     true,
+                                     false,
+                                     true,
+                                     false,
+                                     true,
+                                     false,
+                                     true
+                                   ])
+      expect(modified).to eq(
+        [payload[0], payload[2], payload[4], payload[6], payload[8]]
+      )
+    end
+
+    it 'ignores an overlong sieve' do
+      modified = payload.whitelist(Array.new(22, true))
+      expect(modified).to eq(payload)
+    end
+
+    it 'omits elements beyond the sieve' do
+      modified = payload.whitelist(Array.new(2, true))
+      expect(modified).to eq([1, 2])
+    end
   end
 end
