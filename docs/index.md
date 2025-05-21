@@ -5,11 +5,19 @@ Deeply delete a complex hash/array structure.
 <h2>Latest Releases</h2>
 <ul id="releases"></ul>
 <div id="no-releases-message" style="display:none;">
-  No releases found. <a href="https://github.com/DaneWeber/hash_array_mask/releases/new" target="_blank">Create a new Release</a>.
+  No releases found. <a id="new-release-link" href="#" target="_blank">Create a new Release</a>.
 </div>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
-fetch('https://api.github.com/repos/DaneWeber/hash_array_mask/releases')
+''
+const repo = 'DaneWeber/hash_array_mask';
+const apiBase = 'https://api.github.com/repos/' + repo;
+const releasesApi = `${apiBase}/releases`;
+const newReleaseUrl = `https://www.github.com/${repo}/releases/new`;
+
+document.getElementById('new-release-link').href = newReleaseUrl;
+
+fetch(releasesApi)
   .then(response => response.json())
   .then(data => {
     const ul = document.getElementById('releases');
