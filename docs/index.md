@@ -2,6 +2,15 @@
 
 Deeply delete a complex hash/array structure.
 
+## References
+
+{% for page in site.pages %}
+{% if page.url =~ '/references/' %}
+### [{{ page.title }}]({{ page.url | relative_url }})
+{{ page.description }}
+{% endif %}
+{% endfor %}
+
 ## Guides
 
 {% for guide in site.guides %}
