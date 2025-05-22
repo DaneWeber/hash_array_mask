@@ -5,7 +5,7 @@ Deeply delete a complex hash/array structure.
 ## Guides
 
 {% for guide in site.guides %}
-### [{{ guide.title }}]({{ guide.url }})
+### [{{ guide.title }}]({{ guide.url | relative_url }})
 {{ guide.description }}
 {% endfor %}
 
