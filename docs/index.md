@@ -2,6 +2,13 @@
 
 Deeply delete a complex hash/array structure.
 
+## Guides
+
+{% for guide in site.guides %}
+### [{{ guide.title }}]({{ guide.url }})
+{{ guide.description }}
+{% endfor %}
+
 <h2>Latest Releases</h2>
 <ul id="releases"></ul>
 <div id="no-releases-message" style="display:none;">
